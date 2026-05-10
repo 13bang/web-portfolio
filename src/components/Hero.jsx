@@ -93,7 +93,7 @@ export default function Hero() {
           <div className="hero-photo-wrap">
             <div className="photo-ring" />
             <div className="photo-frame">
-              <img src="/public/PAS FOTO APIP.svg" alt="Muhammad Afif Saifuddin" className="hero-photo" />
+              <img src="/PAS FOTO APIP.svg" alt="Muhammad Afif Saifuddin" className="hero-photo" />
               <div className="photo-placeholder">
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.3">
                   <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/>
