@@ -16,6 +16,14 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+  }, [menuOpen])
+
+  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40)
       const sections = navLinks.map(l => l.href.slice(1))
@@ -32,40 +40,50 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container navbar-inner">
-        <a href="#home" className="navbar-logo">
-          <span className="logo-bracket">&lt;</span>
-          <span className="logo-text">Apip</span>
-          <span className="logo-bracket">/&gt;</span>
-        </a>
+    <>
+      <div 
+        className={`navbar-overlay ${menuOpen ? 'active' : ''}`} 
+        onClick={() => setMenuOpen(false)} 
+      />
 
-        <ul className={`navbar-links ${menuOpen ? 'open' : ''}`}>
-          {navLinks.map(link => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className={active === link.href.slice(1) ? 'active' : ''}
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="container navbar-inner">
+          <a href="#home" className="navbar-logo">
+            <span className="logo-bracket">&lt;</span>
+            <span className="logo-text">Apip</span>
+            <span className="logo-bracket">/&gt;</span>
+          </a>
 
-        <a href="mailto:afif.putra224@gmail.com" className="btn-primary navbar-cta">
-          Hire Me
-        </a>
+          {/* Sidebar Menu */}
+          <ul className={`navbar-links ${menuOpen ? 'open' : ''}`}>
+            {navLinks.map((link, i) => (
+              <li key={link.href} style={{ transitionDelay: `${i * 0.05}s` }}>
+                <a
+                  href={link.href}
+                  className={active === link.href.slice(1) ? 'active' : ''}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-        <button
-          className={`hamburger ${menuOpen ? 'open' : ''}`}
-          onClick={() => setMenuOpen(v => !v)}
-          aria-label="Toggle menu"
-        >
-          <span /><span /><span />
-        </button>
-      </div>
-    </nav>
+          <div className="navbar-right">
+            <a href="mailto:afif.putra224@gmail.com" className="btn-primary navbar-cta">
+              Hire Me
+            </a>
+
+            <button
+              className={`hamburger ${menuOpen ? 'open' : ''}`}
+              onClick={() => setMenuOpen(v => !v)}
+              aria-label="Toggle menu"
+            >
+              <span /><span /><span />
+            </button>
+          </div>
+        </div>
+      </nav>
+    </>
   )
 }
