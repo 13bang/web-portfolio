@@ -1,0 +1,198 @@
+.skill-groups {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.skill-group {
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  transition: border-color 0.25s;
+}
+
+.skill-group:hover {
+  border-color: var(--border-hover);
+}
+
+.skill-group.color-accent { border-top: 2px solid var(--accent); }
+.skill-group.color-green  { border-top: 2px solid var(--green); }
+.skill-group.color-purple { border-top: 2px solid var(--accent-2); }
+.skill-group.color-orange { border-top: 2px solid #f59e0b; }
+
+.sg-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.sg-icon {
+  font-size: 1.1rem;
+}
+
+.sg-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.sg-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.skill-item {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.skill-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.skill-name {
+  font-size: 0.82rem;
+  color: var(--text);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.skill-note {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.skill-bar-track {
+  width: 100px;
+  height: 4px;
+  background: var(--bg-3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--accent);
+  width: var(--target-width);
+  animation: slideRight 1s ease both;
+}
+
+.color-green .skill-bar-fill  { background: var(--green); }
+.color-purple .skill-bar-fill { background: var(--accent-2); }
+.color-orange .skill-bar-fill { background: #f59e0b; }
+
+.skill-level {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  min-width: 28px;
+  text-align: right;
+}
+
+/* Tech badges */
+.tech-section {
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.tech-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.tech-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.filter-btn {
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.73rem;
+  text-transform: capitalize;
+  letter-spacing: 0.03em;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-badge {
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: default;
+}
+
+.tech-badge:hover {
+  transform: translateY(-1px);
+}
+
+.cat-frontend { color: var(--accent); border-color: rgba(79,142,247,0.25); background: rgba(79,142,247,0.05); }
+.cat-backend  { color: var(--green); border-color: rgba(62,207,142,0.25); background: rgba(62,207,142,0.05); }
+.cat-devops   { color: var(--accent-2); border-color: rgba(124,92,252,0.25); background: rgba(124,92,252,0.05); }
+.cat-research { color: #f59e0b; border-color: rgba(245,158,11,0.25); background: rgba(245,158,11,0.05); }
+.cat-tools    { color: var(--text-muted); border-color: var(--border); background: var(--bg-3); }
+
+@media (max-width: 700px) {
+  .skill-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-bar-track {
+    width: 70px;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
